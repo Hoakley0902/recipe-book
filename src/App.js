@@ -16,7 +16,7 @@ function App() {
         <div className="recipe-grid">
           <RecipeCard category="pasta" />
           <RecipeCard category="baked" />
-          <RecipeCard category="grilling" />
+          q<RecipeCard category="grilling" />
         </div>
       </main>
 
