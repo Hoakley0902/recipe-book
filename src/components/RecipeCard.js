@@ -12,7 +12,7 @@ const categoryStyles = {
   snacks:    { color: '#7A8C5E', emoji: '🍿' },
 };
 
-function RecipeCard({ category }) {
+function RecipeCard({ title, category, ingredients, notes }) {
   const style = categoryStyles[category] || { color: '#8B5E3C', emoji: '🍽️' };
 
   return (
@@ -21,24 +21,22 @@ function RecipeCard({ category }) {
         {style.emoji} {category}
       </div>
 
-      <h3>Recipe Title</h3>
-      <p>Category</p>
+      <h3>{title}</h3>
+      <p>{category}</p>
 
-      {/* Ingredients */}
       <div className="ingredients-section">
         <h4>Ingredients</h4>
         <ul>
-          <li>Ingredient 1</li>
-          <li>Ingredient 2</li>
-          <li>Ingredient 3</li>
+          {ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+          ))}
         </ul>
       </div>
 
       <div className="notes-section">
         <h4>Notes</h4>
-        <p>Add notes here...</p>
+        <p>{notes}</p>
       </div>
-
     </div>
   );
 }
