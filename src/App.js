@@ -9,12 +9,17 @@ import vintageBackground from './VintageBackground.jpg';
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [showCover, setShowCover] = useState(true);
+  const [searchTerm, setSearchTerm] = useState('');
 
-  const [recipes, setRecipes] = useState([
-    { id: 1, title: 'Recipe Title', category: 'pasta', ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'], notes: 'Add notes here...' },
-    { id: 2, title: 'Recipe Title', category: 'baked', ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'], notes: 'Add notes here...' },
-    { id: 3, title: 'Recipe Title', category: 'grilling', ingredients: ['Ingredient 1', 'Ingredient 2', 'Ingredient 3'], notes: 'Add notes here...' },
-  ]);
+ const [recipes, setRecipes] = useState([
+  {
+    id: 1,
+    title: 'Add Recipe Title',
+    category: 'pasta',
+    ingredients: ['Add ingredients...'],
+    notes: 'Add notes here...',
+  },
+]);
 
   function handleSaveRecipe(newRecipe) {
     setRecipes([...recipes, { id: Date.now(), ...newRecipe }]);
@@ -24,6 +29,12 @@ function App() {
   if (showCover) {
     return <CoverPage onOpen={() => setShowCover(false)} />;
   }
+
+const filteredRecipes = recipes.filter((recipe) =>
+  recipe.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  recipe.category.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  recipe.ingredients.join(' ').toLowerCase().includes(searchTerm.toLowerCase())
+);
 
   return (
     <div className="app" style={{ backgroundImage: `url(${vintageBackground})`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '100vh' }}>
@@ -37,10 +48,10 @@ function App() {
 
       <main className="main-content">
         <h2 className="section-title">My Recipes</h2>
-        <SearchBar />
+        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
 
         <div className="recipe-grid">
-          {recipes.map((recipe) => (
+          {filteredRecipes.map((recipe) => (
             <RecipeCard
               key={recipe.id}
               title={recipe.title}
