@@ -12,17 +12,30 @@ body {
 }
 
 .navbar {
-  background-color: #3E2208;
-  padding: 16px 32px;
+  position: relative;
+  height: 100px;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 0 32px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
+.navbar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+}
+
 .logo {
-  font-size: 24px;
-  color: white;
+  font-size: 68px;
+    color: #3E2208;
+    font-family: 'Caveat', cursive;
+    text-align: center;
 }
 
 .add-btn {
@@ -32,6 +45,7 @@ body {
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
+  margin-left: auto;
 }
 
 .main-content {
