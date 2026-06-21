@@ -1,14 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-
 body {
   font-family: Arial, sans-serif;
   background-color: #F5ECD7;
-  
 }
 
 .navbar {
@@ -28,18 +28,17 @@ body {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-
 }
 
 .logo {
   font-size: 68px;
-    color: #3E2208;
-    font-family: 'Caveat', cursive;
-    text-align: center;
+  color: #3E2208;
+  font-family: 'Caveat', cursive;
+  text-align: center;
 }
 
 .add-btn {
-  background-color: #7A8C5e;
+  background-color: #7A8C5E;
   color: white;
   border: none;
   padding: 10px 20px;
@@ -56,8 +55,11 @@ body {
   font-size: 22px;
   margin-bottom: 24px;
 }
+
 .search-bar {
   margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
 }
 
 .search-bar input {

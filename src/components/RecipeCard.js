@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { FiPlus, FiTrash2 } from 'react-icons/fi';
 import '../styles/RecipeCard.css';
+import CardBaking from '../CardBaking.png';
+import CardSavory from '../CardSavory.png';
 
 const categoryStyles = {
   pasta:     { color: '#8B5E3C', emoji: '🍝' },
@@ -14,13 +16,19 @@ const categoryStyles = {
   snacks:    { color: '#7A8C5E', emoji: '🍿' },
 };
 
-function RecipeCard({ title, category, ingredients, notes, onDelete, onEdit }) {
+const bakingCategories = ['baked', 'breakfast'];
+
+function RecipeCard({ title, category, ingredients, notes, image, onDelete, onEdit }) {
   const style = categoryStyles[category] || { color: '#8B5E3C', emoji: '🍽️' };
   const [menuOpen, setMenuOpen] = useState(false);
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
+  const cardImage = bakingCategories.includes(category) ? CardBaking : CardSavory;
+  const previewIngredients = ingredients.slice(0, 3);
+  const hasMore = ingredients.length > 3;
+
   return (
-    <div className="recipe-card">
+    <div className="recipe-card" style={{ backgroundImage: `url(${cardImage})` }}>
 
       {/* Delete confirmation popup */}
       {showDeleteConfirm && (
@@ -35,13 +43,14 @@ function RecipeCard({ title, category, ingredients, notes, onDelete, onEdit }) {
         </div>
       )}
 
-      <div className="card-banner" style={{ backgroundColor: style.color }}>
-        <span>{style.emoji} {category}</span>
-
+      {/* Title and buttons floating over the card's brown header */}
+      <div className="card-header-overlay">
+        <span className="card-title">{style.emoji} {title}</span>
         <div className="card-actions">
-          {/* Plus button */}
           <div className="menu-wrapper">
-            <button className="card-action-btn" onClick={() => setMenuOpen(!menuOpen)}><FiPlus /></button>
+            <button className="card-action-btn" onClick={() => setMenuOpen(!menuOpen)}>
+              <FiPlus />
+            </button>
             {menuOpen && (
               <div className="action-dropdown">
                 <button onClick={() => { onEdit('edit'); setMenuOpen(false); }}>✏️ Edit Recipe</button>
@@ -50,28 +59,26 @@ function RecipeCard({ title, category, ingredients, notes, onDelete, onEdit }) {
               </div>
             )}
           </div>
-
-          {/* Trash button */}
-          <button className="card-action-btn" onClick={() => setShowDeleteConfirm(true)}><FiTrash2 /></button>
+          <button className="card-action-btn" onClick={() => setShowDeleteConfirm(true)}>
+            <FiTrash2 />
+          </button>
         </div>
       </div>
 
-      <h3>{title}</h3>
-      <p>{category}</p>
+      {/* Category label */}
+      <p className="card-category">{category}</p>
 
-      <div className="ingredients-section">
+      {/* Ingredient preview */}
+      <div className="ingredients-preview">
         <h4>Ingredients</h4>
         <ul>
-          {ingredients.map((ingredient, index) => (
+          {previewIngredients.map((ingredient, index) => (
             <li key={index}>{ingredient}</li>
           ))}
+          {hasMore && <li className="more-indicator">...</li>}
         </ul>
       </div>
 
-      <div className="notes-section">
-        <h4>Notes</h4>
-        <p>{notes}</p>
-      </div>
     </div>
   );
 }

@@ -8,6 +8,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .form-container {
@@ -18,6 +19,7 @@
   width: 500px;
   max-height: 80vh;
   overflow-y: auto;
+  z-index: 1001;
 }
 
 .form-container h2 {
@@ -25,7 +27,7 @@
   font-style: italic;
   color: #3E2208;
   margin-bottom: 24px;
-  font-size: 24px;
+  font-size: 36px;
 }
 
 .form-group {
@@ -37,7 +39,7 @@
 
 .form-group label {
   font-family: Arial, sans-serif;
-  font-size: 11px;
+  font-size: 14px;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: #5c2a2a;
@@ -48,7 +50,7 @@
 .form-group select,
 .form-group textarea {
   font-family: 'Caveat', cursive;
-  font-size: 14px;
+  font-size: 18px;
   color: #3E2208;
   background-color: #FAF0D7;
   border: 1px solid #C4A882;
