@@ -1,4 +1,4 @@
-# Recipe Book App
+# Recipe Book App - In Progress
 
 A vintage-themed recipe web app built with React, JavaScript, HTML, and CSS. Users can add, edit, delete, and search recipe cards.
 
