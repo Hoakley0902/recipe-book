@@ -1,5 +1,5 @@
 # Recipe Book App - In Progress
-https://tiny-kashata-c75213.netlify.app/
+[https://tiny-kashata-c75213.netlify.app/](https://myrecipe-book-app.netlify.app/)
 A vintage-themed recipe web app built with React, JavaScript, HTML, and CSS. Users can add, edit, delete, and search recipe cards.
 
 ## Features
